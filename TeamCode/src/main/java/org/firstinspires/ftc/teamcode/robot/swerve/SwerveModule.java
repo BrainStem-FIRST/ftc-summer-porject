@@ -25,7 +25,7 @@ import java.util.Locale;
 
 @Config
 public class SwerveModule {
-    public static double P = 1, I = 0.2, D = 0.1;
+    public static double P = 1, I = 0.25, D = 0.11;
     public static double K_STATIC = 0.03;
 
     public static double MAX_SERVO = 1, MAX_MOTOR = 1;
@@ -33,7 +33,7 @@ public class SwerveModule {
     public static boolean MOTOR_FLIPPING = true;
 
     public static double WHEEL_RADIUS = 1.4; // in
-    public static double GEAR_RATIO = 3.0;
+    public static double GEAR_RATIO = 1.0;
     public static final double TICKS_PER_REV = 28;
 
     private DcMotorEx motor;

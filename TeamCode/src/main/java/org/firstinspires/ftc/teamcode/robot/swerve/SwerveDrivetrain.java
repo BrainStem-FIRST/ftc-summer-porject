@@ -22,7 +22,8 @@ public class SwerveDrivetrain implements Drivetrain {
 
     public static boolean maintainHeading = false;
 
-    public static double frontLeftOffset = -0.91, frontRightOffset = 0.07, backLeftOffset = 0.075, backRightOffset = -2.15;
+    public static double frontLeftOffset = -1.04, frontRightOffset = 0.7, backLeftOffset = 0.075, backRightOffset = -2.15;
+//    public static double frontLeftOffset = -0.38, frontRightOffset = 0.20, backLeftOffset = -0.02, backRightOffset = -0.75;
 
     double[] ws = new double[4];
     double[] wa = new double[4];

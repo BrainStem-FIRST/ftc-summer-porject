@@ -133,6 +133,14 @@ public class AbsoluteAnalogEncoder {
         }
     }
 
+    // old original one with no edits
+    public double getCurrentPositionOriginal() {
+        double pos = Angle.norm((!inverted ? 1 - getVoltage() / analogRange : getVoltage() / analogRange) * Math.PI*2 - offset);
+        //checks for crazy values when the encoder is close to zero
+        if(!VALUE_REJECTION || Math.abs(Angle.normDelta(pastPosition)) > 0.1 || Math.abs(Angle.normDelta(pos)) < 1) pastPosition = pos;
+        return pastPosition;
+    }
+
     public AnalogInput getEncoder() {
         return encoder;
     }
