@@ -126,7 +126,7 @@ public class SwerveTest extends CommandOpMode {
         if (gamepad1.right_stick_button && Constants.USING_IMU)
             SwerveDrivetrain.imuOffset = robot.getAngle() + Math.PI;
 
-        double turn = gamepad1.right_stick_x;
+        double turn = gamepad1.right_stick_x * -1;
         if (Math.abs(turn) > 0.002) {
             lock_robot_heading = false;
         }
@@ -146,7 +146,7 @@ public class SwerveTest extends CommandOpMode {
         double rotationAmount = (Constants.USING_IMU) ? robot.getAngle() - SwerveDrivetrain.imuOffset : 0;
         Pose DRIVE = new Pose(
                 new Point(gamepad1.left_stick_x,
-                        joystickScalar(gamepad1.left_stick_y, 0.001)).rotate(rotationAmount),
+                        joystickScalar(gamepad1.left_stick_y * -1, 0.001)).rotate(rotationAmount),
                 lock_robot_heading ? headingCorrection :
                         turn
         );
@@ -163,9 +163,9 @@ public class SwerveTest extends CommandOpMode {
         }
 
         if (gamepad1.a) {
-            drivetrain.setForward(true);
+            drivetrain.setReset(true);
         } else if (gamepad1.b) {
-            drivetrain.setForward(false);
+            drivetrain.setReset(false);
         }
 
 

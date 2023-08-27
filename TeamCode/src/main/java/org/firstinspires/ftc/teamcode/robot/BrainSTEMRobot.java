@@ -89,6 +89,11 @@ public class BrainSTEMRobot {
         backLeftMotor = hardwareMap.get(DcMotorEx.class, "BLdrive");
         backRightMotor = hardwareMap.get(DcMotorEx.class, "BRDandBOdo");
 
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
         frontLeftServo = hardwareMap.get(CRServo.class, "FLturn");
         frontRightServo = hardwareMap.get(CRServo.class, "FRturn");
@@ -104,6 +109,8 @@ public class BrainSTEMRobot {
         frontRightEncoder = hardwareMap.get(AnalogInput.class, "FRE");
         backLeftEncoder = hardwareMap.get(AnalogInput.class, "BLE");
         backRightEncoder = hardwareMap.get(AnalogInput.class, "BRE");
+
+
 
 
 

@@ -25,7 +25,7 @@ import java.util.Locale;
 
 @Config
 public class SwerveModule {
-    public static double P = 1, I = 0.25, D = 0.11;
+    public static double P = 0.5, I = 0.25, D = 0.11;
     public static double K_STATIC = 0.03;
 
     public static double MAX_SERVO = 1, MAX_MOTOR = 1;
@@ -69,8 +69,9 @@ public class SwerveModule {
     }
 
     public void read() {
-        encoder.updateRotations();
-        position = encoder.positionModifier();
+        position = encoder.getCurrentPositionOriginal();
+//        encoder.updateRotations();
+//        position = encoder.positionModifier();
     }
 
     public void update() {

@@ -22,8 +22,10 @@ public class SwerveDrivetrain implements Drivetrain {
 
     public static boolean maintainHeading = false;
 
-    public static double frontLeftOffset = -1.04, frontRightOffset = 0.7, backLeftOffset = 0.075, backRightOffset = -2.15;
-//    public static double frontLeftOffset = -0.38, frontRightOffset = 0.20, backLeftOffset = -0.02, backRightOffset = -0.75;
+    public static double frontLeftOffset = -1.05, frontRightOffset = 0.62, backLeftOffset = -0.02, backRightOffset = -2.26;
+
+//    public static double frontLeftOffset = 0, frontRightOffset = 0, backLeftOffset = 0, backRightOffset = 0;
+
 
     double[] ws = new double[4];
     double[] wa = new double[4];
@@ -37,10 +39,10 @@ public class SwerveDrivetrain implements Drivetrain {
     private boolean reset = false;
 
     public SwerveDrivetrain(BrainSTEMRobot robot) {
-        frontLeftModule = new SwerveModule(robot.frontLeftMotor, robot.frontLeftServo, new AbsoluteAnalogEncoder(robot.frontLeftEncoder, 3.3).zero(frontLeftOffset).setInverted(true));
-        backLeftModule = new SwerveModule(robot.backLeftMotor, robot.backLeftServo, new AbsoluteAnalogEncoder(robot.backLeftEncoder, 3.3).zero(backLeftOffset).setInverted(true));
-        backRightModule = new SwerveModule(robot.backRightMotor, robot.backRightServo, new AbsoluteAnalogEncoder(robot.backRightEncoder, 3.3).zero(backRightOffset).setInverted(true));
-        frontRightModule = new SwerveModule(robot.frontRightMotor, robot.frontRightServo, new AbsoluteAnalogEncoder(robot.frontRightEncoder, 3.3).zero(frontRightOffset).setInverted(true));
+        backLeftModule = new SwerveModule(robot.frontLeftMotor, robot.frontLeftServo, new AbsoluteAnalogEncoder(robot.frontLeftEncoder, 3.3).zero(frontLeftOffset).setInverted(true));
+        frontLeftModule = new SwerveModule(robot.backLeftMotor, robot.backLeftServo, new AbsoluteAnalogEncoder(robot.backLeftEncoder, 3.3).zero(backLeftOffset).setInverted(true));
+        frontRightModule = new SwerveModule(robot.backRightMotor, robot.backRightServo, new AbsoluteAnalogEncoder(robot.backRightEncoder, 3.3).zero(backRightOffset).setInverted(true));
+        backRightModule = new SwerveModule(robot.frontRightMotor, robot.frontRightServo, new AbsoluteAnalogEncoder(robot.frontRightEncoder, 3.3).zero(frontRightOffset).setInverted(true));
 
         modules = new SwerveModule[]{frontLeftModule, frontRightModule, backRightModule, backLeftModule};
         for (SwerveModule m : modules) m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -66,7 +68,7 @@ public class SwerveDrivetrain implements Drivetrain {
             wa = new double[]{0, 0, 0, 0};
         } else if (reset) {
             ws = new double[]{0, 0, 0, 0};
-            wa = new double[]{0, 0, 0, 0};
+            wa = new double[]{Math.PI/4, Math.PI/4, Math.PI/4, Math.PI/4};
         }else {
             ws = new double[]{hypot(b, c), hypot(b, d), hypot(a, d), hypot(a, c)};
             if (!maintainHeading) wa = new double[]{atan2(b, c), atan2(b, d), atan2(a, d), atan2(a, c)};
