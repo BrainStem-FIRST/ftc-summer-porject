@@ -168,6 +168,11 @@ public class SwerveTest extends CommandOpMode {
             drivetrain.setReset(false);
         }
 
+        if (gamepad1.right_trigger > 0.5) {
+            localizer.setPoseEstimate(new Pose2d(0,0,0));
+
+        }
+
 
         robot.loop(DRIVE, drivetrain);
         robot.write(drivetrain);
