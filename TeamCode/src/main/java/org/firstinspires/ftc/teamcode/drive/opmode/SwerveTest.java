@@ -45,15 +45,14 @@ public class SwerveTest extends CommandOpMode {
     SampleMecanumDrive drive;
 
     private SwerveDrivetrain drivetrain;
-//    private IntakeSubsystem intake;
-//    private LiftSubsystem lift;
+
 
     private SlewRateLimiter fw;
     private SlewRateLimiter str;
-    private final PIDFController hController = new PIDFController(0.6, 0, 0.1, 0);
+    private final PIDFController hController = new PIDFController(0.8, 0, 0.1, 0);
 
-    public static double fw_r = 4;
-    public static double str_r = 4;
+    public static double fw_r = 10;
+    public static double str_r = 10;
     private boolean lock_robot_heading = false;
 
     GamepadEx gamepadEx, gamepadEx2;
@@ -76,8 +75,6 @@ public class SwerveTest extends CommandOpMode {
 
 
         drive = new SampleMecanumDrive(hardwareMap);
-
-//        drive.setPoseEstimate(startPosition);
 
         gamepadEx = new GamepadEx(gamepad1);
         gamepadEx2 = new GamepadEx(gamepad2);
@@ -146,7 +143,7 @@ public class SwerveTest extends CommandOpMode {
         double rotationAmount = (Constants.USING_IMU) ? robot.getAngle() - SwerveDrivetrain.imuOffset : 0;
         Pose DRIVE = new Pose(
                 new Point(gamepad1.left_stick_x,
-                        joystickScalar(gamepad1.left_stick_y * -1, 0.001)).rotate(rotationAmount),
+                        joystickScalar(gamepad1.left_stick_y * -1, 0.1)).rotate(rotationAmount),
                 lock_robot_heading ? headingCorrection :
                         turn
         );
@@ -169,7 +166,8 @@ public class SwerveTest extends CommandOpMode {
         }
 
         if (gamepad1.right_trigger > 0.5) {
-            localizer.setPoseEstimate(new Pose2d(0,0,0));
+            localizer.setPoseEstimate(startPosition);
+
 
         }
 

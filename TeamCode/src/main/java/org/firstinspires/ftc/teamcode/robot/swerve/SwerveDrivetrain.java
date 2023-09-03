@@ -82,7 +82,6 @@ public class SwerveDrivetrain implements Drivetrain {
             SwerveModule m = modules[i];
             if (Math.abs(max) > 1) ws[i] /= max;
             m.setMotorPower(Math.abs(ws[i]) + ((USE_WHEEL_FEEDFORWARD) ? minPow * Math.signum(ws[i]) : 0));
-//            m.setMotorPower(0);
             m.setTargetRotation((MathUtils.norm(wa[i])) );
         }
     }
