@@ -42,7 +42,7 @@ public class BrainSTEMRobot {
     public AnalogInput backRightEncoder;
 
     public Motor.Encoder parallelPod;
-    public Motor.Encoder perpindicularPod;
+    public Motor.Encoder perpendicularPod;
 
     private final Object imuLock = new Object();
     @GuardedBy("imuLock")
@@ -116,8 +116,8 @@ public class BrainSTEMRobot {
 
         parallelPod = new MotorEx(hardwareMap, "FLDandFOdo").encoder;
         parallelPod.setDirection(Motor.Direction.FORWARD);
-        perpindicularPod = new MotorEx(hardwareMap, "BRDandBOdo").encoder;
-        perpindicularPod.setDirection(Motor.Direction.REVERSE);
+        perpendicularPod = new MotorEx(hardwareMap, "BRDandBOdo").encoder;
+        perpendicularPod.setDirection(Motor.Direction.REVERSE);
 
 
         if (Constants.AUTO) {
@@ -165,7 +165,7 @@ public class BrainSTEMRobot {
     public void reset() {
         try {
             parallelPod.reset();
-            perpindicularPod.reset();
+            perpendicularPod.reset();
         } catch (Exception e) {
         }
         imuOffset = imu.getAngularOrientation().firstAngle;

@@ -36,7 +36,7 @@ public class TwoWheelLocalizer extends TwoTrackingWheelLocalizer implements Swer
         ));
 
         this.horizontalPosition = () -> robot.parallelPod.getPosition();
-        this.lateralPosition = () -> robot.perpindicularPod.getPosition();
+        this.lateralPosition = () -> robot.perpendicularPod.getPosition();
         this.imuAngle = robot::getAngle;
 
     }
