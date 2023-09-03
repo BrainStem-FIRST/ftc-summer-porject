@@ -187,6 +187,8 @@ public class SwerveTest extends CommandOpMode {
         telemetry.addData("heading", localizer.getPos().heading);
         telemetry.addLine("-------" + "\n");
         telemetry.addLine(drivetrain.getTelemetry());
+        telemetry.addLine("-------");
+        telemetry.addData("DRIVE Pose", DRIVE);
         drive.setPoseEstimate(poseEstimate);
         drive.update();
         loopTime = loop;
